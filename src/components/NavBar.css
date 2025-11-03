@@ -78,6 +78,6 @@
   }
 
   body {
-    padding-top: 120px; /* más espacio para navbar en móvil si se apila */
+    padding-top: 120px;
   }
 }
