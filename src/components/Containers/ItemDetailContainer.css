@@ -19,6 +19,7 @@
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(255, 255, 255, 0.08);
+  animation: fadeIn 0.4s ease;
 }
 
 .item-detail img {
@@ -86,4 +87,9 @@
   .item-info {
     align-items: center;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

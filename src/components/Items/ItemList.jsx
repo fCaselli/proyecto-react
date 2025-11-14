@@ -1,11 +1,17 @@
 import Item from "./Item";
-import { products } from "../../data/products.js"
+import productos from "../../data/products.js";
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   return (
-    <div className="catalogo">
-      {products.map((producto) => (
-        <Item key={producto.id} producto={producto} />
+    <div className="ml-grid">
+      {items.map((prod) => (
+        <Item
+          key={prod.id}
+          id={prod.id}
+          nombre={prod.nombre}
+          precio={prod.precio}
+          imagen={prod.imagen}
+        />
       ))}
     </div>
   );

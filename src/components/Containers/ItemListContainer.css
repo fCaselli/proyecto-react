@@ -91,6 +91,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: background .20s ease;
+  text-decoration: none;
 }
 
 .ml-btn:hover {
