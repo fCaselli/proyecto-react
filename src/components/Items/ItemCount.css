@@ -1,0 +1,57 @@
+.itemcount-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 180px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.itemcount-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itemcount-btn {
+  background: #222;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.itemcount-btn:hover {
+  background: #000;
+}
+
+.itemcount-display {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.itemcount-add {
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.itemcount-add:hover {
+  background: #1f8c3a;
+}
+
+.itemcount-add:disabled {
+  background: #bcbcbc;
+  cursor: not-allowed;
+}

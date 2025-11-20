@@ -1,34 +1,26 @@
-import "./ItemDetail.css";
+import ItemCount from "../Items/ItemCount";
 
-const ItemDetail = ({ producto }) => {
-  const { nombre, precio, categoria, imagen, rating, reviews } = producto;
+function ItemDetail({ producto }) {
+  const { nombre, imagen, precio, rating, reviews } = producto;
 
   return (
-    <div className="item-detail">
-      <img src={imagen} alt={nombre} />
+    <div className="detail-card">
+      <img src={imagen} alt={nombre} className="detail-img" />
 
-      <div className="item-info">
+      <div className="detail-info">
         <h2>{nombre}</h2>
+        <p className="detail-price">${precio.toLocaleString()}</p>
 
-        <p className="category">
-          Categoría: <span>{categoria}</span>
-        </p>
+        <p>⭐ {rating} ({reviews} reviews)</p>
 
-        <p className="rating">
-          {"⭐".repeat(rating)} <span className="reviews">({reviews})</span>
-        </p>
-
-        <p className="price">${precio.toLocaleString()}</p>
-
-        <p className="description">
-          Un producto de excelente calidad. Materiales premium, diseño moderno y
-          perfecto para uso diario.
-        </p>
-
-        <button className="add-btn">Agregar al carrito</button>
+        {/* 🔥 Acá insertás el contador */}
+        <ItemCount 
+          stock={10} 
+          onAdd={(cantidad) => console.log("Agregado:", cantidad)} 
+        />
       </div>
     </div>
   );
-};
+}
 
 export default ItemDetail;
