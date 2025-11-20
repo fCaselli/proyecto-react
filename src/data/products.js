@@ -1,3 +1,4 @@
+// IMPORTS DE IMÁGENES
 import remera1 from "../assets/img/remera1.jpg";
 import remera2 from "../assets/img/remera2.jpg";
 import remera3 from "../assets/img/remera3.jpg";
@@ -10,6 +11,7 @@ import accesorio1 from "../assets/img/accesorio1.jpg";
 import accesorio2 from "../assets/img/accesorio2.jpg";
 import accesorio3 from "../assets/img/accesorio3.jpg";
 
+// LISTA DE PRODUCTOS
 export const productos = [
   // ROPA
   {
@@ -19,7 +21,7 @@ export const productos = [
     precio: 16000,
     imagen: remera1,
     rating: 4,
-    reviews: 128
+    reviews: 128,
   },
   {
     id: "r2",
@@ -28,7 +30,7 @@ export const productos = [
     precio: 32000,
     imagen: remera2,
     rating: 5,
-    reviews: 98
+    reviews: 98,
   },
   {
     id: "r3",
@@ -37,7 +39,7 @@ export const productos = [
     precio: 45000,
     imagen: remera3,
     rating: 4,
-    reviews: 203
+    reviews: 203,
   },
 
   // CALZADO
@@ -48,7 +50,7 @@ export const productos = [
     precio: 58000,
     imagen: zapatilla1,
     rating: 5,
-    reviews: 128
+    reviews: 128,
   },
   {
     id: "c2",
@@ -57,7 +59,7 @@ export const productos = [
     precio: 42000,
     imagen: zapatilla2,
     rating: 4,
-    reviews: 67
+    reviews: 67,
   },
   {
     id: "c3",
@@ -66,7 +68,7 @@ export const productos = [
     precio: 69000,
     imagen: zapatilla3,
     rating: 5,
-    reviews: 153
+    reviews: 153,
   },
 
   // ACCESORIOS
@@ -77,7 +79,7 @@ export const productos = [
     precio: 9000,
     imagen: accesorio1,
     rating: 4,
-    reviews: 128
+    reviews: 128,
   },
   {
     id: "a2",
@@ -86,7 +88,7 @@ export const productos = [
     precio: 35000,
     imagen: accesorio2,
     rating: 4,
-    reviews: 54
+    reviews: 54,
   },
   {
     id: "a3",
@@ -95,6 +97,23 @@ export const productos = [
     precio: 27000,
     imagen: accesorio3,
     rating: 5,
-    reviews: 189
-  }
+    reviews: 189,
+  },
 ];
+
+// ⚡PROMESAS (SIMULAN FETCH A UN BACKEND REAL)
+export const getProductos = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(productos);
+    }, 1000); // 1 segundo para simular carga
+  });
+};
+
+export const getProductoById = (id) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(productos.find((p) => p.id === id));
+    }, 1000);
+  });
+};

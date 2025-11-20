@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { productos } from "../../data/products";   // ← IMPORT CORRECTO
-import ItemDetail from "../ItemDetail/ItemDetail.jsx";
+import { getProductoById } from "../../data/products";
+import ItemDetail from "../ItemDetail/ItemDetail";
 import "./ItemDetailContainer.css";
 
 const ItemDetailContainer = () => {
@@ -13,17 +13,18 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     setLoading(true);
+    setError("");
 
-    // Simulación de fetch (luego lo cambiamos al servicio real)
-    const found = productos.find((p) => p.id === Number(itemId));
-
-    if (!found) {
-      setError("Producto no encontrado");
-    } else {
-      setProducto(found);
-    }
-
-    setLoading(false);
+    getProductoById(itemId)
+      .then((res) => {
+        if (!res) {
+          setError("Producto no encontrado.");
+        } else {
+          setProducto(res);
+        }
+      })
+      .catch(() => setError("Error al cargar el producto."))
+      .finally(() => setLoading(false));
   }, [itemId]);
 
   if (loading) return <h2 className="loading">Cargando producto...</h2>;
