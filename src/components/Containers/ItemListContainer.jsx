@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import productos from "../../data/products.js";
-import ItemList from "../Items/ItemList";
+import { productos } from "../../data/products";
+import ItemCard from "../Items/ItemCard";
 import "./ItemListContainer.css";
 
 function ItemListContainer() {
@@ -14,7 +14,11 @@ function ItemListContainer() {
     <div className="ml-container">
       <h2 className="ml-titulo">Catálogo de productos</h2>
 
-      <ItemList items={productosFiltrados} />
+      <div className="ml-grid">
+        {productosFiltrados.map((prod) => (
+          <ItemCard key={prod.id} producto={prod} />
+        ))}
+      </div>
     </div>
   );
 }

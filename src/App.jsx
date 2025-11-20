@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom'
-import NavBar from "./components/NavBar/NavBar.jsx"
-import ItemListContainer from './components/Containers/ItemListContainer'
-import ItemDetailContainer from './components/Containers/ItemDetailContainer'
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar.jsx";
+import ItemListContainer from "./components/Containers/ItemListContainer.jsx";
+import ItemDetailContainer from "./components/Containers/ItemDetailContainer.jsx";
 
 function App() {
   return (
@@ -9,12 +9,11 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/category/:categoryId" element={<ItemListContainer />} />
-        <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-        <Route path="*" element={<h2>404 - Página no encontrada</h2>} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

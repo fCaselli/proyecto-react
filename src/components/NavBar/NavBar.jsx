@@ -12,21 +12,21 @@ function NavBar() {
         {/* Links */}
         <div className="nav-links">
           <NavLink 
-            to="/category/ropa" 
+            to="/categoria/ropa" 
             className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}
           >
             Ropa
           </NavLink>
 
           <NavLink 
-            to="/category/calzado"
+            to="/categoria/calzado"
             className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}
           >
             Calzado
           </NavLink>
 
           <NavLink 
-            to="/category/accesorios"
+            to="/categoria/accesorios"
             className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}
           >
             Accesorios
