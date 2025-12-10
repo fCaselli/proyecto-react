@@ -1,20 +1,14 @@
-import Item from "./Item";
-import productos from "../../data/products.js";
+import ItemCard from "./ItemCard";
+import "./ItemList.css";
 
-const ItemList = ({ items }) => {
+function ItemList({ productos }) {
   return (
-    <div className="ml-grid">
-      {items.map((prod) => (
-        <Item
-          key={prod.id}
-          id={prod.id}
-          nombre={prod.nombre}
-          precio={prod.precio}
-          imagen={prod.imagen}
-        />
+    <div className="item-list">
+      {productos.map((prod) => (
+        <ItemCard key={prod.id} producto={prod} />
       ))}
     </div>
   );
-};
+}
 
 export default ItemList;

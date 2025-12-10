@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductos } from "../../data/products";
-import ItemCard from "../Items/ItemCard";
+import { getProducts, getProductsByCategory } from "../../data/products";
+import ItemList from "../Items/ItemList.jsx";
 import "./ItemListContainer.css";
 
-const ItemListContainer = () => {
+function ItemListContainer() {
   const { categoryId } = useParams();
-
-  const [items, setItems] = useState([]);
+  const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -15,32 +14,36 @@ const ItemListContainer = () => {
     setLoading(true);
     setError("");
 
-    getProductos()
-      .then((res) => {
-        if (categoryId) {
-          setItems(res.filter((p) => p.categoria === categoryId));
-        } else {
-          setItems(res);
-        }
-      })
-      .catch(() => setError("Error al cargar los productos."))
+    const fetchFn = categoryId ? getProductsByCategory : getProducts;
+
+    fetchFn(categoryId)
+      .then((res) => setProductos(res))
+      .catch(() => setError("Error al cargar productos"))
       .finally(() => setLoading(false));
   }, [categoryId]);
 
-  if (loading) return <h2 className="loading">Cargando productos...</h2>;
-  if (error) return <h2 className="error">{error}</h2>;
+  if (loading) {
+    return <p className="status">Cargando productos...</p>;
+  }
+
+  if (error) {
+    return <p className="status error">{error}</p>;
+  }
+
+  if (productos.length === 0) {
+    return (
+      <p className="status">
+        No hay productos para esta categoría todavía.
+      </p>
+    );
+  }
 
   return (
-    <div className="ml-container">
-      <h2 className="ml-titulo">Catálogo de productos</h2>
-
-      <div className="ml-grid">
-        {items.map((prod) => (
-          <ItemCard key={prod.id} producto={prod} />
-        ))}
-      </div>
-    </div>
+    <main className="list-page">
+      <h2 className="list-title">Catálogo de productos</h2>
+      <ItemList productos={productos} />
+    </main>
   );
-};
+}
 
 export default ItemListContainer;

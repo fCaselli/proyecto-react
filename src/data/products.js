@@ -1,4 +1,3 @@
-// IMPORTS DE IMÁGENES
 import remera1 from "../assets/img/remera1.jpg";
 import remera2 from "../assets/img/remera2.jpg";
 import remera3 from "../assets/img/remera3.jpg";
@@ -11,7 +10,6 @@ import accesorio1 from "../assets/img/accesorio1.jpg";
 import accesorio2 from "../assets/img/accesorio2.jpg";
 import accesorio3 from "../assets/img/accesorio3.jpg";
 
-// LISTA DE PRODUCTOS
 export const productos = [
   // ROPA
   {
@@ -20,7 +18,7 @@ export const productos = [
     nombre: "Remera Oversize Blanca",
     precio: 16000,
     imagen: remera1,
-    rating: 4,
+    rating: 4.5,
     reviews: 128,
   },
   {
@@ -29,7 +27,7 @@ export const productos = [
     nombre: "Remera Negra Premium",
     precio: 32000,
     imagen: remera2,
-    rating: 5,
+    rating: 4.9,
     reviews: 98,
   },
   {
@@ -38,7 +36,7 @@ export const productos = [
     nombre: "Remera Clásica Azul",
     precio: 45000,
     imagen: remera3,
-    rating: 4,
+    rating: 4.2,
     reviews: 203,
   },
 
@@ -49,7 +47,7 @@ export const productos = [
     nombre: "Zapatilla Running",
     precio: 58000,
     imagen: zapatilla1,
-    rating: 5,
+    rating: 4.8,
     reviews: 128,
   },
   {
@@ -58,7 +56,7 @@ export const productos = [
     nombre: "Zapatilla Urbana Negra",
     precio: 42000,
     imagen: zapatilla2,
-    rating: 4,
+    rating: 4.4,
     reviews: 67,
   },
   {
@@ -87,7 +85,7 @@ export const productos = [
     nombre: "Bolso Crossbody",
     precio: 35000,
     imagen: accesorio2,
-    rating: 4,
+    rating: 4.3,
     reviews: 54,
   },
   {
@@ -96,24 +94,34 @@ export const productos = [
     nombre: "Mochila Urbana",
     precio: 27000,
     imagen: accesorio3,
-    rating: 5,
+    rating: 4.9,
     reviews: 189,
   },
 ];
 
-// ⚡PROMESAS (SIMULAN FETCH A UN BACKEND REAL)
-export const getProductos = () => {
+// helpers con promesas para la consigna
+export function getProducts() {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(productos);
-    }, 1000); // 1 segundo para simular carga
+    setTimeout(() => resolve(productos), 600);
   });
-};
+}
 
-export const getProductoById = (id) => {
+export function getProductsByCategory(categoryId) {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(productos.find((p) => p.id === id));
-    }, 1000);
+    setTimeout(
+      () =>
+        resolve(productos.filter((prod) => prod.categoria === categoryId)),
+      600
+    );
   });
-};
+}
+
+export function getProductById(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const found = productos.find((prod) => prod.id === id);
+      if (found) resolve(found);
+      else reject(new Error("Producto no encontrado"));
+    }, 600);
+  });
+}

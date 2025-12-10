@@ -15,11 +15,15 @@ function ItemCount({ stock = 10, initial = 1, onAdd }) {
   return (
     <div className="itemcount-container">
       <div className="itemcount-controls">
-        <button className="itemcount-btn" onClick={disminuir}>−</button>
+        <button className="itemcount-btn" onClick={disminuir}>
+          −
+        </button>
 
         <span className="itemcount-display">{count}</span>
 
-        <button className="itemcount-btn" onClick={aumentar}>+</button>
+        <button className="itemcount-btn" onClick={aumentar}>
+          +
+        </button>
       </div>
 
       <button

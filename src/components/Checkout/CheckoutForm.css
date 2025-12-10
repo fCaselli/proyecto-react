@@ -1,0 +1,31 @@
+.checkout-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 16px 40px;
+  color: #f9fafb;
+}
+
+.checkout-page h2 {
+  font-size: 1.7rem;
+  margin-bottom: 16px;
+}
+
+.checkout-page span {
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.checkout-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: #f9fafb;
+}

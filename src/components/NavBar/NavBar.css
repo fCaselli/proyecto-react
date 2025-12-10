@@ -1,5 +1,5 @@
 .navbar {
-  background: #111827;
+  background: #020617;
   padding: 12px 0;
   color: white;
   border-bottom: 1px solid #1f2937;
@@ -31,6 +31,7 @@
 }
 
 .nav-item {
+  position: relative;
   color: #d1d5db;
   text-decoration: none;
   font-size: 1.1rem;
@@ -43,12 +44,10 @@
   width: 0%;
   height: 2px;
   background-color: #00b4ff;
-
   position: absolute;
   left: 0;
   bottom: -4px;
-
-  transition: width .3s ease;
+  transition: width 0.3s ease;
 }
 
 .nav-item:hover {
