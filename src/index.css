@@ -15,3 +15,24 @@ body {
 #root {
   min-height: 100vh;
 }
+
+/* BOTONES GENERALES */
+.btn-primary {
+  display: inline-block;
+  background: #2563eb; /* azul elegante */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background .2s ease, transform .15s ease;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  transform: scale(1.03);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}

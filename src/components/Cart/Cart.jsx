@@ -1,45 +1,38 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 import "./Cart.css";
 
 function Cart() {
-  const { cart, totalPrice, clearCart } = useContext(CartContext);
+  const { cart, clearCart, totalPrice } = useContext(CartContext);
 
   if (cart.length === 0) {
     return (
-      <div className="cart-page">
-        <h2>Tu carrito está vacío</h2>
-        <Link to="/" className="primary-btn">
-          Volver al catálogo
-        </Link>
+      <div className="cart-empty">
+        <h2>El carrito está vacío</h2>
+        <Link to="/" className="btn-back btn-primary">Volver al catálogo</Link>
       </div>
     );
   }
 
   return (
     <div className="cart-page">
-      <h2>Carrito de compras</h2>
+      <h2>Tu carrito</h2>
 
-      <div className="cart-list">
+      <div className="cart-items">
         {cart.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </div>
 
-      <div className="cart-summary">
-        <p>
-          Total: <span>${totalPrice.toLocaleString()}</span>
-        </p>
-        <div className="cart-actions">
-          <button className="secondary-btn" onClick={clearCart}>
-            Vaciar carrito
-          </button>
-          <Link to="/checkout" className="primary-btn">
-            Ir al checkout
-          </Link>
-        </div>
+      <h3 className="cart-total">
+        Total: ${totalPrice().toLocaleString()}
+      </h3>
+
+      <div className="cart-actions">
+        <button className="btn-empty" onClick={clearCart}>Vaciar carrito</button>
+        <Link to="/checkout" className="btn-checkout">Finalizar compra</Link>
       </div>
     </div>
   );
