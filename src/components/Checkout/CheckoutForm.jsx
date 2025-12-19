@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import "./CheckoutForm.css";
 
+
 function CheckoutForm() {
   const { cart, totalPrice, clearCart } = useContext(CartContext);
   const [buyer, setBuyer] = useState({ name: "", email: "", phone: "" });

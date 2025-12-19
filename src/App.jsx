@@ -5,6 +5,8 @@ import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer.jsx
 import Cart from "./components/Cart/Cart.jsx";
 import CheckoutForm from "./components/Checkout/CheckoutForm.jsx";
 
+import OrderConfirm from "./components/Order/OrderConfirm";
+
 function App() {
   return (
     <>
@@ -24,6 +26,9 @@ function App() {
 
         {/* checkout */}
         <Route path="/checkout" element={<CheckoutForm />} />
+
+        {/* order */}
+        <Route path="/order" element={<OrderConfirm />} />
 
         {/* 404 */}
         <Route path="*" element={<h2 style={{ color: "#fff", textAlign: "center", marginTop: "40px" }}>404 - Página no encontrada</h2>} />

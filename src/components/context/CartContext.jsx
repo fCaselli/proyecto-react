@@ -1,24 +1,31 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   // Agregar producto al carrito
   const addToCart = (item, quantity) => {
+    const stock = Number.isFinite(item?.stock) ? Math.max(0, item.stock) : Infinity;
+    const qty = Number.isFinite(quantity) ? Math.floor(quantity) : 0;
+    if (qty <= 0) return;
+    if (stock === 0) return;
+
     const exists = cart.find((prod) => prod.id === item.id);
 
     if (exists) {
-      setCart(
-        cart.map((prod) =>
-          prod.id === item.id
-            ? { ...prod, quantity: prod.quantity + quantity }
-            : prod
-        )
-      );
+      const newQty = Math.min(exists.quantity + qty, stock);
+      setCart(cart.map((prod) => (prod.id === item.id ? { ...prod, quantity: newQty } : prod)));
     } else {
-      setCart([...cart, { ...item, quantity }]);
+      setCart([...cart, { ...item, quantity: Math.min(qty, stock) }]);
     }
   };
 
@@ -29,6 +36,7 @@ export function CartProvider({ children }) {
 
   // Vaciar carrito
   const clearCart = () => {
+    localStorage.removeItem("cart");
     setCart([]);
   };
 

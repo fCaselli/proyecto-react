@@ -51,6 +51,11 @@
   color: #22c55e;
 }
 
+.detail-stock {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
 .detail-rating {
   color: gold;
 }

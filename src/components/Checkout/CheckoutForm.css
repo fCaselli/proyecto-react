@@ -29,3 +29,21 @@
   background: #020617;
   color: #f9fafb;
 }
+
+.order-confirm {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #111;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.order-confirm h2 {
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+
+.order-confirm button {
+  margin-top: 20px;
+}

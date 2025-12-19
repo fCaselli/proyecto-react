@@ -13,7 +13,7 @@ function ItemDetail({ producto }) {
     setAdded(true);
   };
 
-  const { nombre, imagen, precio, rating, reviews } = producto;
+  const { nombre, imagen, precio, rating, reviews, stock = 0 } = producto;
 
   return (
     <div className="detail-card">
@@ -23,11 +23,12 @@ function ItemDetail({ producto }) {
         <h2>{nombre}</h2>
         <p className="detail-price">${precio.toLocaleString()}</p>
         <p>⭐ {rating} ({reviews})</p>
+        <p className="detail-stock">Stock disponible: {stock}</p>
 
         {!added ? (
-          <ItemCount stock={10} initial={1} onAdd={onAdd} />
+          <ItemCount stock={stock} initial={1} onAdd={onAdd} />
         ) : (
-          <Link to="/cart" className="go-cart-btn btn-primary">
+          <Link to="/cart" className="primary-btn">
             Ir al carrito
           </Link>
         )}
